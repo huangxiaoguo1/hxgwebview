@@ -12,7 +12,6 @@ import tsou.cn.lib_webview.Webset;
 public class MainActivity extends AppCompatActivity {
 
     private WebView mWebview;
-    private MyJsInteraction myJsInteraction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         mWebview = (WebView) findViewById(R.id.webview);
-        myJsInteraction = new MyJsInteraction(this);
         Webset.newInstance().with(this, mWebview)
                 .url("https://blog.csdn.net/huangxiaoguo1")
                 .setCacheEnable(true)
                 .setWebViewClient(new MyWebViewClientListener())
                 .setWebChromeClient(new MyWebChromeClientListener())
-                .setJavaScriptEnabled(true,"hahaha",myJsInteraction)
+                .setJavaScriptEnabled(true,"hahaha",new MyJsInteraction(this))
                 .setWebsetting();
-        myJsInteraction.getCommentCollectNum("111111");
     }
 }

@@ -18,3 +18,4 @@ public class MyWebChromeClientListener implements WebChromeClientListener {
         Log.e("huangxiaoguo","onReceivedTitle==>"+title);
     }
 }
+
