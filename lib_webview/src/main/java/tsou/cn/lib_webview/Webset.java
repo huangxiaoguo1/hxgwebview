@@ -107,7 +107,7 @@ public class Webset extends BaseWebset {
         mWebSettings.setBuiltInZoomControls(false);
         mWebSettings.setSavePassword(false);
         mWebSettings.setJavaScriptEnabled(jsInteraction);
-        if (jsInteraction == true) {
+        if (jsInteraction == true&& !TextUtils.isEmpty(jsName)) {
             mWebView.addJavascriptInterface(mJsInteraction, jsName);
         }
         if (cahceEnabled == true) {
