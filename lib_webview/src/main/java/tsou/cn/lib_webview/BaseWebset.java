@@ -23,7 +23,7 @@ public class BaseWebset {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
-                return super.shouldOverrideUrlLoading(view, url);
+                return true;
             }
 
             @Override
