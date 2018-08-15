@@ -22,7 +22,11 @@ public class BaseWebset {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+                if (webViewClientListener != null) {
+                    webViewClientListener.shouldOverrideUrlLoading(view,url);
+                }else {
+                    view.loadUrl(url);
+                }
                 return true;
             }
 

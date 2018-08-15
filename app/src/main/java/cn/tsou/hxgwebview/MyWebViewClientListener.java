@@ -15,6 +15,12 @@ public class MyWebViewClientListener implements WebViewClientListener {
     public MyWebViewClientListener(){
 
     }
+
+    @Override
+    public void shouldOverrideUrlLoading(WebView view, String url) {
+
+    }
+
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         Log.e("huangxiaoguo","onPageStarted==>"+url);

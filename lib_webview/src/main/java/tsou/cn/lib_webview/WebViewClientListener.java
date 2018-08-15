@@ -9,6 +9,8 @@ import android.webkit.WebView;
 
 public interface WebViewClientListener {
 
+    public void shouldOverrideUrlLoading(WebView view, String url);
+
     public void onPageStarted(WebView view, String url, Bitmap favicon);
 
     public void onPageFinished(WebView view, String url);
