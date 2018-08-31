@@ -12,22 +12,22 @@ import tsou.cn.lib_webview.WebViewClientListener;
 
 public class MyWebViewClientListener implements WebViewClientListener {
 
-    public MyWebViewClientListener(){
+    public MyWebViewClientListener() {
 
     }
 
     @Override
     public void shouldOverrideUrlLoading(WebView view, String url) {
-
+        view.loadUrl(url);
     }
 
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        Log.e("huangxiaoguo","onPageStarted==>"+url);
+        Log.e("huangxiaoguo", "onPageStarted==>" + url);
     }
 
     @Override
     public void onPageFinished(WebView view, String url) {
-        Log.e("huangxiaoguo","onPageFinished==>"+url);
+        Log.e("huangxiaoguo", "onPageFinished==>" + url);
     }
 }

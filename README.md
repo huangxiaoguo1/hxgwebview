@@ -11,7 +11,7 @@ allprojects {
 }
 
 dependencies {
-	   implementation 'com.github.huangxiaoguo1:hxgwebview:1.0.2'
+	   implementation 'com.github.huangxiaoguo1:hxgwebview:1.0.3'
 }
 ```
 
@@ -45,20 +45,23 @@ Webset.newInstance().with(mCtonext, mWebView).url("网页链接").setWebsetting(
 
 public class MyWebViewClientListener implements WebViewClientListener {
 
-    
-    public MyWebViewClientListener(){
+    public MyWebViewClientListener() {
 
     }
-   
+
+    @Override
+    public void shouldOverrideUrlLoading(WebView view, String url) {
+        view.loadUrl(url);
+    }
+
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        Log.e("huangxiaoguo","onPageStarted==>"+url);
+        Log.e("huangxiaoguo", "onPageStarted==>" + url);
     }
 
-   
     @Override
     public void onPageFinished(WebView view, String url) {
-        Log.e("huangxiaoguo","onPageFinished==>"+url);
+        Log.e("huangxiaoguo", "onPageFinished==>" + url);
     }
 }
 ```
@@ -115,14 +118,15 @@ public class MyJsInteraction extends JsInteraction {
 ## 使用案例
 
 ```
- private void initView() {
+    private void initView() {
         mWebview = (WebView) findViewById(R.id.webview);
         Webset.newInstance().with(this, mWebview)
                 .url("https://blog.csdn.net/huangxiaoguo1")
                 .setCacheEnable(true)
                 .setWebViewClient(new MyWebViewClientListener())
                 .setWebChromeClient(new MyWebChromeClientListener())
-                .setJavaScriptEnabled(true,"hahaha",new MyJsInteraction(this))
+//                .setJavaScriptEnabled(true,"hahaha",new MyJsInteraction(this))
+                .setJavaScriptEnabled(true,null,null)
                 .setWebsetting();
     }
 ```

@@ -26,6 +26,6 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-//    compile 'com.github.huangxiaoguo1:hxgwebview:1.0.0'
-    compile project(':lib_webview')
+    compile 'com.github.huangxiaoguo1:hxgwebview:1.0.3'
+//    compile project(':lib_webview')
 }

@@ -24,10 +24,9 @@ public class MainActivity extends AppCompatActivity {
         mWebview = (WebView) findViewById(R.id.webview);
         Webset.newInstance().with(this, mWebview)
                 .url("https://blog.csdn.net/huangxiaoguo1")
-                .url("http://sycs.dashouzhang.org/bone//app/meeting/fxorganization_show.json?uid=f39c5c5c651df8c201651e06a0300005&meetShow=1")
                 .setCacheEnable(true)
                 .setWebViewClient(new MyWebViewClientListener())
-//                .setWebChromeClient(new MyWebChromeClientListener())
+                .setWebChromeClient(new MyWebChromeClientListener())
 //                .setJavaScriptEnabled(true,"hahaha",new MyJsInteraction(this))
                 .setJavaScriptEnabled(true,null,null)
                 .setWebsetting();
