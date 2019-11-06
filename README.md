@@ -11,7 +11,7 @@ allprojects {
 }
 
 dependencies {
-	   implementation 'com.github.huangxiaoguo1:hxgwebview:1.0.3'
+	   implementation 'com.github.huangxiaoguo1:hxgwebview:1.0.4'
 }
 ```
 
