@@ -2,6 +2,7 @@ package tsou.cn.lib_webview;
 
 import android.graphics.Bitmap;
 import android.net.http.SslError;
+import android.webkit.GeolocationPermissions;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -61,6 +62,15 @@ public class BaseWebset {
                 if (webChromeClientListener != null) {
                     webChromeClientListener.onReceivedTitle(view, title);
                 }
+            }
+
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin,true,false);
+                if (webChromeClientListener != null) {
+                    webChromeClientListener.onGeolocationPermissionsShowPrompt(origin, callback);
+                }
+                super.onGeolocationPermissionsShowPrompt(origin, callback);
             }
         });
     }

@@ -1,5 +1,6 @@
 package tsou.cn.lib_webview;
 
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebView;
 
 /**
@@ -8,4 +9,6 @@ import android.webkit.WebView;
 
 public interface WebChromeClientListener {
     public void onReceivedTitle(WebView view, String title);
+
+    void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback);
 }
