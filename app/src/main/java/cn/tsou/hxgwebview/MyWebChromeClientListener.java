@@ -23,5 +23,10 @@ public class MyWebChromeClientListener implements WebChromeClientListener {
     public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
 
     }
+
+    @Override
+    public void onProgressChanged(WebView view, int newProgress) {
+
+    }
 }
 

@@ -65,6 +65,14 @@ public class BaseWebset {
             }
 
             @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                if (webChromeClientListener != null) {
+                    webChromeClientListener.onProgressChanged(view, newProgress);
+                }
+            }
+
+            @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 callback.invoke(origin,true,false);
                 if (webChromeClientListener != null) {

@@ -8,7 +8,9 @@ import android.webkit.WebView;
  */
 
 public interface WebChromeClientListener {
-    public void onReceivedTitle(WebView view, String title);
+    void onReceivedTitle(WebView view, String title);
 
     void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback);
+
+    void onProgressChanged(WebView view, int newProgress);
 }
