@@ -5,6 +5,8 @@ import android.net.http.SslError;
 import android.webkit.GeolocationPermissions;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -15,17 +17,25 @@ import android.webkit.WebViewClient;
 public class BaseWebset {
 
 
-    public  WebViewClientListener webViewClientListener;
+    public WebViewClientListener webViewClientListener;
     public WebChromeClientListener webChromeClientListener;
 
 
     public void setWebViewClient(WebView mWebView) {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                if (webViewClientListener != null) {
+                    webViewClientListener.shouldInterceptRequest(view, request);
+                }
+                return super.shouldInterceptRequest(view, request);
+            }
+
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (webViewClientListener != null) {
-                    webViewClientListener.shouldOverrideUrlLoading(view,url);
-                }else {
+                    webViewClientListener.shouldOverrideUrlLoading(view, url);
+                } else {
                     view.loadUrl(url);
                 }
                 return true;
@@ -74,7 +84,7 @@ public class BaseWebset {
 
             @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-                callback.invoke(origin,true,false);
+                callback.invoke(origin, true, false);
                 if (webChromeClientListener != null) {
                     webChromeClientListener.onGeolocationPermissionsShowPrompt(origin, callback);
                 }

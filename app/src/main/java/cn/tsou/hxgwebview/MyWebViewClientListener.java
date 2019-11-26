@@ -2,6 +2,7 @@ package cn.tsou.hxgwebview;
 
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 
 import tsou.cn.lib_webview.WebViewClientListener;
@@ -29,5 +30,10 @@ public class MyWebViewClientListener implements WebViewClientListener {
     @Override
     public void onPageFinished(WebView view, String url) {
         Log.e("huangxiaoguo", "onPageFinished==>" + url);
+    }
+
+    @Override
+    public void shouldInterceptRequest(WebView view, WebResourceRequest request) {
+
     }
 }

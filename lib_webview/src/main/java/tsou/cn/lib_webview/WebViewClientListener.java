@@ -1,6 +1,7 @@
 package tsou.cn.lib_webview;
 
 import android.graphics.Bitmap;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 
 /**
@@ -14,4 +15,6 @@ public interface WebViewClientListener {
     public void onPageStarted(WebView view, String url, Bitmap favicon);
 
     public void onPageFinished(WebView view, String url);
+
+    void shouldInterceptRequest(WebView view, WebResourceRequest request);
 }
