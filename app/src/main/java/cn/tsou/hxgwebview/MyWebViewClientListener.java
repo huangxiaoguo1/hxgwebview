@@ -3,6 +3,7 @@ package cn.tsou.hxgwebview;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 
 import tsou.cn.lib_webview.WebViewClientListener;
@@ -33,7 +34,9 @@ public class MyWebViewClientListener implements WebViewClientListener {
     }
 
     @Override
-    public void shouldInterceptRequest(WebView view, WebResourceRequest request) {
-
+    public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+        return null;
     }
+
+
 }

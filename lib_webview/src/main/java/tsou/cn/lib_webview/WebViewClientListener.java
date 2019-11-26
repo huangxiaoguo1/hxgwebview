@@ -2,6 +2,7 @@ package tsou.cn.lib_webview;
 
 import android.graphics.Bitmap;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 
 /**
@@ -16,5 +17,5 @@ public interface WebViewClientListener {
 
     public void onPageFinished(WebView view, String url);
 
-    void shouldInterceptRequest(WebView view, WebResourceRequest request);
+    WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request);
 }
