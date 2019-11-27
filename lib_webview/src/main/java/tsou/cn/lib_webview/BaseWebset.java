@@ -59,6 +59,7 @@ public class BaseWebset {
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.cancel();
                 handler.proceed();//接受所有https证书
             }
         });
@@ -73,7 +74,6 @@ public class BaseWebset {
                     webChromeClientListener.onReceivedTitle(view, title);
                 }
             }
-
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
