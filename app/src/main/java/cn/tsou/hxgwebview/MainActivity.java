@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mWebview = (WebView) findViewById(R.id.webview);
         Webset.newInstance().with(this, mWebview)
-                .url("https://www.baidu.com/s?wd=11")
+                .url("https://www.baidu.com2")
                 .setCacheEnable(true)
                 .setWebViewClient(new MyWebViewClientListener())
                 .setWebChromeClient(new MyWebChromeClientListener())

@@ -1,7 +1,10 @@
 package cn.tsou.hxgwebview;
 
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -20,7 +23,10 @@ public class MyWebViewClientListener implements WebViewClientListener {
 
     @Override
     public void shouldOverrideUrlLoading(WebView view, String url) {
-        view.loadUrl(url);
+        Log.i("huangxiaoguo",url);
+        if (url.startsWith("http") || url.startsWith("https") || url.startsWith("ftp")) {
+            view.loadUrl(url);
+        }
     }
 
     @Override
@@ -36,6 +42,17 @@ public class MyWebViewClientListener implements WebViewClientListener {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         return null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+        Log.e("huangxiaoguo", "onReceivedError==>" + error.getDescription().toString());
+    }
+
+    @Override
+    public void onLoadResource(WebView view, String url) {
+
     }
 
 }

@@ -5,6 +5,7 @@ import android.net.http.SslError;
 import android.webkit.GeolocationPermissions;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -49,6 +50,7 @@ public class BaseWebset {
                 }
             }
 
+
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
@@ -58,8 +60,23 @@ public class BaseWebset {
             }
 
             @Override
+            public void onLoadResource(WebView view, String url) {
+                super.onLoadResource(view, url);
+                if (webViewClientListener != null) {
+                    webViewClientListener.onLoadResource(view, url);
+                }
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                if (webViewClientListener != null) {
+                    webViewClientListener.onReceivedError(view, request,error);
+                }
+            }
+
+            @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.cancel();
                 handler.proceed();//接受所有https证书
             }
         });
@@ -74,6 +91,7 @@ public class BaseWebset {
                     webChromeClientListener.onReceivedTitle(view, title);
                 }
             }
+
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
